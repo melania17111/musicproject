@@ -1,3 +1,26 @@
-<div>ciao!</div>
-<div>nooo</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.35/Tone.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Tone.js</title>
+</head>
+<body>
+    <h1>Suono Generato da Tone.js</h1>
+    <button onclick="playSound()">Suona</button>
+    <button onclick="playMelody()">Suona</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.35/Tone.min.js"></script>
+    <script>
+
+
+            function playMelody() { 
+                const synth2 = new Tone.Synth().toDestination();
+                const sequence = new Tone.Sequence((time, note) => {
+                    synth2.triggerAttackRelease(note, 0.5, time);
+                }, ["C4", "E4", "G4", "B4", "C5"], "4n");
+                Tone.Transport.start();
+                sequence.start();
+        }
+    </script>
+</body>
+</html>
